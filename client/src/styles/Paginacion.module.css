@@ -1,0 +1,24 @@
+
+
+.ListaDePaginacion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.4rem 1rem;
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+
+.ListaDePaginacion li{
+  font-size: 1.2rem;
+  margin: 0 0.1rem;
+  list-style: none;
+  /* background-color: #111032; */
+}
+
+.ListaDePaginacion li a{
+  text-align: center;
+  padding: 0.4rem;
+  color: black;
+}

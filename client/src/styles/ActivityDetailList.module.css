@@ -1,0 +1,32 @@
+.ActivitiesListData {
+  margin-top: .9rem;
+  padding-bottom: 1rem;
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Activity h3 {
+  color: #f4f4f4;
+  text-shadow: 3px 2px black;
+}
+
+.Activity p {
+  color: black;
+}
+
+.Activity {
+  width: 100%;
+  max-width: 160px;
+  cursor:context-menu ;
+  border-radius: .4rem;
+  background-color: #FF8811;
+  padding: .8rem;
+  margin: .7rem .5rem;
+  transition: transform .3s ease;
+}
+
+.Activity:hover {
+  transform: scale(1.04,1.04);
+}

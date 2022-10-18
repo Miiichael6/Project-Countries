@@ -1,0 +1,48 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, ::after, ::before {
+  margin: 0;
+  padding: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  background-image: url("./imgs/ant_world.jpg");
+  /* background-repeat: no-repeat; */
+  background-color: rgb(50, 50, 50);
+  background-blend-mode: soft-light;
+  background-size: cover;
+  background-position: 50%;
+  height: 100vh;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+/* 
+.inactive {
+  background-color: black;
+  color: white;
+} */

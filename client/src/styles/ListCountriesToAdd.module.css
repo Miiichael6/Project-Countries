@@ -1,0 +1,18 @@
+.ListOdCountries {
+  border-radius: .6rem;
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.CountriesAdd{
+  margin: 0 auto;
+}
+
+.CountriesAdd img {
+  width: 50px;
+  height: 30px;
+}

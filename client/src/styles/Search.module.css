@@ -1,0 +1,40 @@
+.SearchBarStyles {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #111032;
+  color: #f4f4f4;
+  padding-top: 0.5rem;
+}
+
+.InputSearch {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.6rem;
+  border: none;
+  outline: none;
+}
+
+.errors {
+  outline: 3px solid #eb3908;
+}
+
+.sucess {
+  outline: 3px solid #19ae3f;
+}
+
+
+/* * ButtonSearch */
+
+.ButtonSearch {
+  font-size: 15px;
+  border-radius: 0.4rem;
+  margin-left: 1rem;
+  padding: 0.58rem;
+  border: none;
+  background-color: #11558d;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transform: translateY(-2px);
+}

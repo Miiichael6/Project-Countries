@@ -1,0 +1,26 @@
+.FormasDeOrdenamiento {
+  padding: .5rem 0;
+  background-color: #111032;
+  color: white;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.FormasDeOrdenamiento div {
+  margin: 0 1rem
+}
+
+.FormasDeOrdenamiento select {
+  padding: 0.26rem;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  border: none;
+}
+
+.FormasDeOrdenamiento option {
+  text-align: center;
+  padding: 0.26rem;
+  
+}

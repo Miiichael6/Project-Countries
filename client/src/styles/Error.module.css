@@ -1,0 +1,10 @@
+.ContainError {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ContainError div {
+  max-width: 700px;
+}

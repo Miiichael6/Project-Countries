@@ -1,0 +1,59 @@
+figure {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  max-width: 280px;
+  min-width: 250px;
+  width: 100%;
+  margin-bottom: 30px;
+  background-color: transparent;
+  backdrop-filter: blur(3px);
+  box-shadow: 1px 1px 1rem black;
+  border-radius: .2rem;
+  padding-bottom: 0.3rem;
+  color: #f4f4f4;
+  transition: transform 0.1s ease;
+}
+
+figure:hover {
+  transform: scale(.95,.95);
+}
+
+figure p {
+  font-weight: 600;
+  color: white;
+}
+
+.CountryImgContainer {
+  width: 100%;
+  height: auto;
+}
+
+.CountryImgContainer img {
+  border-radius: .2rem;
+  display: block;
+  width: 100%;
+  height: 180px;
+  margin: 0 auto;
+}
+
+
+.TextCountry {
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  margin-top: .2rem;
+  text-align: center;
+}
+
+.TextCountry a{
+  font-size: 1.6rem;
+  color: #f1ecec;
+}
+
+.TextCountry a:hover {
+  color: rgb(0, 0, 0);
+}

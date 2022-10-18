@@ -1,0 +1,106 @@
+.CountryDetailContain {
+  text-align: center;
+  padding: 1rem;
+  color: aliceblue;
+}
+
+.CountryDetailContain h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 3px 3px black;
+  letter-spacing: 3px;
+}
+
+.CountryDetailContain p {
+  font-size: 1.2rem;
+}
+
+.CountryDetailContain ul {
+  list-style: none;
+}
+
+.ImgCountryContain {
+  margin: 0 auto;
+  max-width: 500px;
+  min-width: 300px;
+  height: 300px;
+}
+.ImgCountryContain img {
+  height: 300px;
+}
+
+.ImgAndTextContainer {
+  display: flex;
+  align-items: center;
+}
+
+.Container1 {
+  margin: 0 auto;
+}
+
+.Container2 {
+  padding-top: 2rem;
+  margin: 0 auto;
+}
+
+.Return {
+  position: fixed;
+  padding: 0.7rem;
+  padding-top: 0.3rem;
+  top: 5.6rem;
+  left: 1rem;
+  color: aliceblue;
+  background-color: black;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  transition: color 0.3s ease,
+  background-color 0.3s ease, 
+  transform 0.3s ease;
+}
+
+.Return:hover {
+  transform: scale(0.9, 0.9);
+  background-color: #fff;
+  color: black;
+}
+
+.CountryActivities {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.CountryActTitle {
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1.3rem;
+  color: white;
+  background-color: transparent;
+}
+
+.CountryActTitle h2 {
+  display: inline-block;
+  margin: 0 auto;
+  background-color: rgb(8, 20, 96);
+  padding: .7rem;
+  padding-top: .3rem;
+  border-radius: .8rem;
+}
+
+
+@media screen and (max-width: 700px) {
+  .ImgAndTextContainer {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .ImgAndTextContainer img {
+    height: 200px;
+  }
+
+  .ImgCountryContain {
+    height: 200px;
+  }
+}

@@ -1,0 +1,74 @@
+/* !Importaciones */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap");
+/* !Importaciones */
+
+/* !Container */
+.Container {
+  padding: 2rem;
+}
+
+/*  */
+.Welcome {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../imgs/ant_world.jpg");
+  background-repeat: no-repeat;
+  background-color: rgb(50, 50, 50);
+  background-blend-mode: soft-light;
+  background-size: cover;
+  background-position: 50%;
+}
+
+/* ? Button */
+.ButtonWelcome {
+  display: block;
+  margin: 0 auto;
+  font-family: "Merriweather", serif;
+  color: #531816;
+  font-weight: 600;
+  border-radius: 2px;
+  border: none;
+  background-color: #a2611f;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.ButtonWelcome:hover {
+  color: #510806;
+  background-color: #864a0f;
+}
+
+header {
+  display: none;
+}
+
+/* !Maquina de escribir */
+.LetterMachine {
+  display: block;
+  margin-bottom: 2rem;
+  font-family: "Merriweather", serif;
+  white-space: nowrap;
+  border-right: 4px solid;
+  width: 12ch;
+  color: #d0baa4;
+  font-size: 3rem;
+
+  animation: typing 2s steps(15), blink 0.5s infinite step-end alternate;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

@@ -1,4 +1,5 @@
 import {
+  DELETE_COUNTRY_ACTIVITY,
   FILTER_ALL_MY_COUNTRIES,
   FILTER_BY_ACTIVITIES,
   GET_ALL_ACTIVITIES,
@@ -17,6 +18,7 @@ const initialState = {
 };
 
 export default function reducerMain(state = initialState, action) {
+  
   switch (action.type) {
     case GET_ALL_COUNTRIES:
       return {
@@ -24,16 +26,19 @@ export default function reducerMain(state = initialState, action) {
         allCountries: action.payload,
         allCountriesCopy: action.payload,
       };
+    //* ==========
     case GET_COUNTRY_DETAIL:
       return {
         ...state,
         countryDetail: { ...action.payload[0] },
       };
+    //  *=========
     case SEARCH_COUNTRIES:
       return {
         ...state,
         allCountries: action.payload,
       };
+    //  *=========
     case FILTER_ALL_MY_COUNTRIES:
       const myCountries = state.allCountriesCopy;
       const paisesFiltrados =
@@ -44,6 +49,7 @@ export default function reducerMain(state = initialState, action) {
         ...state,
         allCountries: paisesFiltrados,
       };
+    //  *=========
     case WAY_TO_ORDER_COUNTRIES:
       const dataNormal = state.allCountries;
       let dataCopy = JSON.parse(JSON.stringify(dataNormal));
@@ -74,13 +80,15 @@ export default function reducerMain(state = initialState, action) {
       } else {
         return { ...state, allCountries: state.allCountriesCopy };
       }
-
+    //  *=========
     case GET_ALL_ACTIVITIES:
       return {
         ...state,
         allActivities: action.payload,
         allActivitiesCopy: action.payload,
       };
+    //  *=========
+
     case FILTER_BY_ACTIVITIES:
       const dataOriCopy = JSON.parse(JSON.stringify(state.allCountriesCopy));
       const allCountryFiltered = action.payload
@@ -94,6 +102,15 @@ export default function reducerMain(state = initialState, action) {
       return {
         ...state,
         allCountries: allCountryFiltered,
+      };
+
+    case DELETE_COUNTRY_ACTIVITY:
+      const activityFilter = JSON.parse(JSON.stringify(state.allActivities))
+      const filtrado = activityFilter.filter(i => i.id !== action.payload) 
+      console.log(action.payload);
+      return {
+        ...state,
+        allActivities: filtrado,
       };
 
     default:

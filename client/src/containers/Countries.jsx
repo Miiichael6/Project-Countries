@@ -9,26 +9,29 @@ import SearchBar from "./SearchBar";
 const Countries = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.reducerMain.allCountries);
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [countryPerPage] = useState(10);
+  const [firstPage, setFirstPage] = useState(0);
 
   useEffect(() => {
-    setLoading(true);
     dispatch(getAllCountries());
-    setLoading(false);
-
     return () => {
-      dispatch(getAllCountries([]))
-    }
+      dispatch(getAllCountries([]));
+    };
   }, [dispatch]);
 
-  const indexOfLastCountries = currentPage * countryPerPage;
-  const indexOfFirstCountries = indexOfLastCountries - countryPerPage;
-  const currentCountries = data.slice(
-    indexOfFirstCountries,
-    indexOfLastCountries
-  );
+  const indexOfLastCountries = currentPage * countryPerPage; //? 1 * 10
+  const indexOfFirstCountries = indexOfLastCountries - countryPerPage; //*
+  let currentCountries;
+  if (firstPage === 0) {
+    setTimeout(() => {
+      setFirstPage(1)
+    }, 300)
+    currentCountries = data.slice(currentPage, countryPerPage - 1);
+    // setFirstPage(1);
+  } else {
+    currentCountries = data.slice(indexOfFirstCountries, indexOfLastCountries);
+  }
 
   const paginate = (e, pageNumber) => {
     e.preventDefault();
@@ -41,10 +44,10 @@ const Countries = () => {
       <Form />
       <Paginacion
         countryPerPage={countryPerPage}
-        total={data.length}
+        dataLength={data.length}
         paginate={paginate}
       />
-      {<DisplayAllCountries loading={loading} data={currentCountries} />}
+      {<DisplayAllCountries data={currentCountries} />}
     </div>
   );
 };

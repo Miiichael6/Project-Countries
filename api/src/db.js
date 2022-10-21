@@ -43,7 +43,7 @@ const { Activity, Country } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 // const { Country, Activity } = sequelize.models;
-Country.belongsToMany(Activity, { through: "Activities_in_Countries" });
+Country.belongsToMany(Activity, { through: "Activities_in_Countries" });  // Muchos a Muchos
 Activity.belongsToMany(Country, { through: "Activities_in_Countries" });
 
 module.exports = {

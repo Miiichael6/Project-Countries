@@ -9,8 +9,8 @@ const ListCountriesAdd = ({ countries, deleteCountry, countriesAct }) => {
           <img
             src={countriesAct[index].img_bandera}
             alt={countriesAct[index].nombre}
+            onClick={() => deleteCountry(i)}
           />
-          <button onClick={() => deleteCountry(i)}>X</button>
         </div>
       ))}
     </div>

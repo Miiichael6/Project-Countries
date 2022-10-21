@@ -9,6 +9,8 @@
 
 .Activity h3 {
   color: #f4f4f4;
+  font-size: 1.6em;
+  margin-bottom: .4rem;
   text-shadow: 3px 2px black;
 }
 
@@ -29,4 +31,10 @@
 
 .Activity:hover {
   transform: scale(1.04,1.04);
+}
+
+@media screen and (max-width: 600px) {
+  .ActivitiesListData {
+    padding-bottom: 8rem;
+  }
 }

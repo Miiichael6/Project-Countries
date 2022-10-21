@@ -5,30 +5,30 @@ import Sections from "../styles/Sections.module.css";
 import { useSelector } from "react-redux";
 
 const DisplayAllCountries = ({ data }) => {
-  // const [refresh, setRefresh] = useState(false)
   const [loader, setLoader] = useState(false);
-  const countries = useSelector(state => state.reducerMain.allCountries)
+  const countries = useSelector((state) => state.reducerMain.allCountries);
 
   useEffect(() => {
-    if (data.length < 1 ) {
+    if (data.length < 1) {
       setLoader(true);
       setTimeout(() => {
         setLoader(false);
-      }, 5000)
-    }
-    else setLoader(false);
+      }, 5000);
+    } else setLoader(false);
   }, [data.length]);
-  
-  if(data.length === 0 && countries.length !== 0){
-    data = countries
+
+  if (data.length === 0 && countries.length !== 0) {
+    data = countries;
   }
 
-  const stylee = {color: "#fff", marginTop: "17rem"}
+  const stylee = { color: "#fff", marginTop: "17rem" };
 
   return (
     <section id={"Section"} className={Sections.SectionCoutriesLoad}>
       {loader && <Loader />}
-      {data.length === 0 && !loader && <h1 style={stylee}>No se Encontró el Pais</h1>}
+      {data.length === 0 && !loader && (
+        <h1 style={stylee}>No se Encontró el Pais</h1>
+      )}
       {data.length &&
         data.map((i) => (
           <Country

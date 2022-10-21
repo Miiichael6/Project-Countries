@@ -7,13 +7,13 @@ routerActivities.get("/", async (req, res) => {
   try {
     const allData = await Activity.findAll();
 
-    return res.send(allData);
+    return res.status(200).send(allData);
   } catch (err) {
-    return res.send(err.message);
+    return res.status(404).send(err.message);
   }
 });
 
-// * POST--------------------------------------------------------
+// * POST-==================================================>
 routerActivities.post("/", async (req, res) => {
   try {
     const { nombre, dificultad, duracion, temporada, countryId } = req.body;
@@ -26,35 +26,37 @@ routerActivities.post("/", async (req, res) => {
     });
     await newActivity.addCountries(countryId);
 
-    return res.send(newActivity);
+    return res.status(200).send(newActivity);
   } catch (error) {
-    return res.send(error.message);
+    return res.status(404).send(error.message);
   }
 });
 
 // * PUT =====================================================>
 
-routerActivities.put("/upd", async (req, res) => {
-  try {
-    const { id, temporada, duracion } = req.body;
-    const dataToUpdate = await Activity.findByPk(id);
-    if (!dataToUpdate) {
-      throw {
-        error: true,
-        statusText: "Error no se encontró el Pais",
-      };
-    }
-    await dataToUpdate.update({
-      ...dataToUpdate,
-      temporada,
-      duracion,
-    });
-    return res.status(200).send(dataToUpdate);
-  } catch (error) {
-    if (error.statusText) return res.status(404).send(error.statusText);
-    return res.status(404).send(error.message);
-  }
-});
+// routerActivities.put("/upd", async (req, res) => {
+//   try {
+//     const { id, temporada, duracion } = req.body;
+//     const dataToUpdate = await Activity.findByPk(id);
+//     if (!dataToUpdate) {
+//       throw {
+//         error: true,
+//         statusText: "Error no se encontró el Pais",
+//       };
+//     }
+//     await dataToUpdate.update({
+//       ...dataToUpdate,
+//       temporada,
+//       duracion,
+//     });
+//     return res.status(200).send(dataToUpdate);
+//   } catch (error) {
+//     if (error.statusText) return res.status(404).send(error.statusText);
+//     return res.status(404).send(error.message);
+//   }
+// });
+
+// !DELETEEE- ======================================================
 
 routerActivities.delete("/:id", async (req, res) => {
   try {

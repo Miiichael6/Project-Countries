@@ -1,0 +1,32 @@
+
+.AboutContainer {
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  height: 85vh;
+  padding: 1rem;
+}
+
+.SubContainer {
+  padding: 2.2rem;
+  background-color: #baa401;
+  border-radius: 1rem;
+  color: rgb(11, 41, 132);
+}
+
+.SubContainer h1 {
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+}
+
+.TextAbout {
+  color: black;
+  border-radius: 1rem;
+  background-color: rgb(238, 206, 24);
+  font-size: 1.2rem;
+  padding: 1.3rem;
+  font-weight: 600;
+}

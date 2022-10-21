@@ -1,0 +1,68 @@
+.ActivitiesContainer {
+  margin-top: 1rem;
+  padding: 1rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ActivitiesContainer h2 {
+  margin-top: 20rem;
+  padding: 1rem;
+  background-color: rgb(212, 157, 18);
+  border-radius: .4rem;
+  color: #221f1f;
+}
+
+.ActivityCard {
+  position: relative;
+  max-width: 220px;
+  width: 100%;
+  border-radius: .4rem;
+  padding: 1.3rem;
+  background-color: #fff;
+  margin: 0 .8rem;
+  margin-bottom: 2rem;
+}
+
+.ActivityCard h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: .4rem;
+}
+
+.ActivityCard p {
+  font-size: 1.3rem;
+}
+
+.ActivityCard button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 2rem;
+  height: 2rem;
+  background-color: #fff;
+  border-radius: 50%;
+  border: none;
+  transition: transform 0.1s ease;
+  cursor: pointer;
+}
+
+.ActivityCard button b {
+  color: white;
+  font-size: 1rem;
+}
+
+.ActivityCard button b img {
+  width: 15px;
+  height: 10px;
+  color: white;
+  font-size: 1rem;
+}
+
+.ActivityCard button:hover {
+  transform: scale(1.2, 1.2);
+  background-color:  rgb(199, 29, 29);
+}
+

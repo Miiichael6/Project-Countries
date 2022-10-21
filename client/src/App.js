@@ -3,8 +3,11 @@ import Welcome from "./components/Welcome";
 import Countries from "./containers/Countries";
 import CountryDetail from "./containers/CountryDetail";
 import NavBar from "./containers/NavBar";
-import ActivityCreate from "./containers/activityCreate"
+import ActivityCreate from "./containers/activityCreate";
 import Error404 from "./components/Error404";
+import Footer from "./components/Footer";
+// import About from "./components/About";
+import Activities from "./containers/Activities";
 
 function App() {
   return (
@@ -18,10 +21,21 @@ function App() {
         <Route exact path={"/countries/:id"}>
           <NavBar />
           <CountryDetail />
+          <Footer />
         </Route>
         <Route exact path={"/create/countries"}>
           <NavBar />
           <ActivityCreate />
+          <Footer />
+        </Route>
+        <Route exact path={"/about"}>
+          <NavBar />
+          {/* <About /> */}
+          <Footer />
+        </Route>
+        <Route exact path={"/activities"}>
+          <NavBar />
+          <Activities />
         </Route>
         <Route path={"*"}>
           <NavBar />

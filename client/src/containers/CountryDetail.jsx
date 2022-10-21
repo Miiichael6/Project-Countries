@@ -19,7 +19,6 @@ const CountryDetail = () => {
     };
   }, [id, dispatch]);
 
-  console.log(countryDetail.activities);
 
   return (
     <>

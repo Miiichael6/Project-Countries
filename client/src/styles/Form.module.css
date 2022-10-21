@@ -24,3 +24,12 @@
   padding: 0.26rem;
   
 }
+
+@media screen and (max-width: 600px) {
+  .FormasDeOrdenamiento {
+    flex-direction: column;
+  }
+  .FormasDeOrdenamiento div {
+    margin: 1rem 1rem
+  }
+}

@@ -16,16 +16,21 @@ const initialForm = {
 const initialErrorForm = {
   nombreErr: false,
   duracionErr: false,
+  dificultadErr: false,
+  temporadaErr: false,
+  countryIdErr: false,
 };
 
 const CreateActivityForm = () => {
   const dispatch = useDispatch();
+  const paises = useSelector((state) => state.reducerMain.allCountriesCopy);
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState(initialErrorForm);
-  const { nombreErr, duracionErr } = error;
-  const { nombre, temporada, dificultad, duracion } = form;
-  const paises = useSelector((state) => state.reducerMain.allCountriesCopy);
+  const { nombreErr, duracionErr, dificultadErr, countryIdErr, temporadaErr } =
+    error;
+  const { nombre, temporada, dificultad, duracion, countryId } = form;
   const [countriesAct, setCountriesAct] = useState([]);
+  const [noSelect, setNoSelect] = useState(false);
 
   const reset = () => {
     setForm({
@@ -35,6 +40,13 @@ const CreateActivityForm = () => {
       duracion: "",
       countryId: [],
     });
+    setError({
+      ...error,
+      temporadaErr: false,
+      dificultadErr: false,
+      countryIdErr: false,
+    });
+    setNoSelect(false)
   };
 
   useEffect(() => {
@@ -56,8 +68,13 @@ const CreateActivityForm = () => {
     }
 
     if (name === "duracion") {
-      if (parseInt(data) > 0 && parseInt(data) < 25) {
-        setError({ ...error, duracionErr: false });
+      data = Number(data);
+      if (typeof data === "number") {
+        if (data > 0 && data < 25) {
+          setError({ ...error, duracionErr: false });
+        } else {
+          setError({ ...error, duracionErr: true });
+        }
       } else {
         setError({ ...error, duracionErr: true });
       }
@@ -75,14 +92,34 @@ const CreateActivityForm = () => {
     });
   };
 
+  const handleSelects = (e) => {
+    // console.log(dificultad, countryId, temporada);
+    if (!dificultad || !countryId.length || !temporada) {
+      setNoSelect(true)
+    }else {
+      setNoSelect(false)
+    }
+  };
+
+  const handlerBlur = (e) => {
+    let value = e.target.value;
+    const name = e.target.name;
+    // console.log(value);
+    if (!value) {
+      setError({ ...error, [`${name}Err`]: true });
+    } else {
+      setError({ ...error, [`${name}Err`]: false });
+    }
+  };
+
   const handlerPaises = (e) => {
+    if (e.target.value === "") return;
     if (form.countryId.includes(e.target.value)) {
       return alert("Ya existe ese Pais en actividades");
     }
 
     const findCountry = paises.find((i) => i.id === e.target.value);
     setCountriesAct([...countriesAct, findCountry]);
-    console.log();
     setForm({
       ...form,
       countryId: [...form.countryId, e.target.value],
@@ -102,15 +139,25 @@ const CreateActivityForm = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    alert("actividad creada");
-    dispatch(addCountryActivity(form));
-    setForm({
-      nombre: "",
-      temporada: "",
-      dificultad: "",
-      duracion: "",
-      countryId: [],
-    });
+    if (!dificultad || !countryId.length || !temporada) handleSelects();
+    else {
+      alert("actividad creada");
+      dispatch(addCountryActivity(form));
+      setForm({
+        nombre: "",
+        temporada: "",
+        dificultad: "",
+        duracion: "",
+        countryId: [],
+      });
+      setError({
+        ...error,
+        temporadaErr: false,
+        dificultadErr: false,
+        countryIdErr: false,
+      });
+      setNoSelect(false)
+    }
   };
 
   return (
@@ -132,7 +179,7 @@ const CreateActivityForm = () => {
               value={nombre}
               onChange={(e) => handlerChange(e)}
               autoComplete={"off"}
-              required
+              className={`${nombreErr ? ACM.incorrectNom : ACM.correctNom}`}
             />
             <br />
             {nombre.length > 0 && nombreErr && (
@@ -147,7 +194,8 @@ const CreateActivityForm = () => {
                 name="dificultad"
                 id="dificultad"
                 onChange={(e) => handlerChange(e)}
-                required
+                // required
+                onBlur={(e) => handlerBlur(e)}
                 value={dificultad}
               >
                 <option value="">---</option>
@@ -157,17 +205,18 @@ const CreateActivityForm = () => {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
+              {dificultadErr && <span>Elige una dificultad</span>}
             </div>
             <div>
               <label htmlFor="duracion">Duracion: </label>
               <input
-                type="number"
+                type="text"
                 name="duracion"
                 id="duracion"
                 value={duracion}
                 onChange={(e) => handlerChange(e)}
                 autoComplete="off"
-                required
+                className={duracionErr ? ACM.incorrectDur : ACM.correctDur}
               />
             </div>
             <br />
@@ -181,6 +230,7 @@ const CreateActivityForm = () => {
               name="countryId"
               id="countryId"
               value={form.countryId}
+              onBlur={(e) => handlerBlur(e)}
               onChange={(e) => handlerPaises(e)}
             >
               <option value="">---</option>
@@ -190,6 +240,7 @@ const CreateActivityForm = () => {
                 </option>
               ))}
             </select>
+            {countryIdErr && <span>Elige almenos un pais</span>}
           </div>
 
           <div>
@@ -200,7 +251,7 @@ const CreateActivityForm = () => {
               id="temporada"
               value={temporada}
               onChange={(e) => handlerChange(e)}
-              required
+              onBlur={(e) => handlerBlur(e)}
             >
               <option value="">---</option>
               <option value="Verano">Verano</option>
@@ -208,20 +259,29 @@ const CreateActivityForm = () => {
               <option value="Invierno">Invierno</option>
               <option value="Primavera">Primavera</option>
             </select>
+            {temporadaErr && <span>elige una temporada</span>}
           </div>
           <div className={ACM.ButtomsCreateActivity}>
+            {noSelect && <span>Ningun Campo puede quedar vacio</span>}
             <input
               type="submit"
-              disabled={nombreErr || duracionErr || form.countryId.length < 1}
+              disabled={
+                !nombreErr &&
+                nombre.length > 1 &&
+                !duracionErr &&
+                duracion.length > 0
+                  ? false
+                  : true
+              }
             />
             <input type="reset" onClick={reset} />
           </div>
-            <ListCountriesAdd
-              countries={form.countryId}
-              deleteCountry={deleteCountry}
-              allCountries={paises}
-              countriesAct={countriesAct}
-            />
+          <ListCountriesAdd
+            countries={form.countryId}
+            deleteCountry={deleteCountry}
+            allCountries={paises}
+            countriesAct={countriesAct}
+          />
         </form>
       </div>
     </div>

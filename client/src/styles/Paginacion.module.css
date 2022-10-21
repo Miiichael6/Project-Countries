@@ -22,3 +22,9 @@
   padding: 0.4rem;
   color: black;
 }
+
+
+.active {
+  font-size: 3rem;
+  color: blue;
+}

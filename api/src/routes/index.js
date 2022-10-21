@@ -5,14 +5,14 @@ const GET_ALL_DATA = require("../GET_ALL_DATA");
 // Ejemplo: const authrouterCountries = require('./auth.js');
 const routerCountries = Router();
 
-// ? ********************Manejo de Rutas*********************
+// ? ********************Manejo de Rutas|| COUNTRY *********************
 
 routerCountries.get("/", async (req, res) => {
   try {
     const { name } = req.query;
-    const allData = await Country.findAll({ include: Activity });
     let data = await Country.count();
     if (data < 1) await GET_ALL_DATA();
+    const allData = await Country.findAll({ include: Activity });
 
     if (!name) {
       return res.status(200).send(allData);
@@ -60,10 +60,10 @@ routerCountries.get("/:id", async (req, res) => {
       };
     }
 
-    return res.send(searchByID);
+    return res.status(200).send(searchByID);
   } catch (error) {
-    if (error.statusText) return res.send(error);
-    return res.send(error.message);
+    if (error.statusText) return res.status(404).send(error);
+    return res.status(404).send(error.message);
   }
 });
 

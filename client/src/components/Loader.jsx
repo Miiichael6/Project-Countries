@@ -3,7 +3,7 @@ import "../styles/loader.css"
 
 const Loader = () => {
   return (
-    <div>
+    <div className="Medio">
       <div className="loadingio-spinner-dual-ring-f1vnrgalnga">
         <div className="ldio-6l4fleoogwg">
           <div></div>

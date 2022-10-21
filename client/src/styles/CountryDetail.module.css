@@ -4,6 +4,10 @@
   color: aliceblue;
 }
 
+.CountryDetailContain b {
+  color:rgb(255, 221, 2);
+}
+
 .CountryDetailContain h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;

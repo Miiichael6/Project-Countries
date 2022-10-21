@@ -1,5 +1,6 @@
 import {
   ADD_COUNTRY_ACTIVITY,
+  DELETE_COUNTRY_ACTIVITY,
   FILTER_ALL_MY_COUNTRIES,
   FILTER_BY_ACTIVITIES,
   GET_ALL_ACTIVITIES,
@@ -89,6 +90,15 @@ export function getAllActivities() {
 export function filterByActivities(activity) {
   return {
     type: FILTER_BY_ACTIVITIES,
-    payload: activity
+    payload: activity,
+  };
+}
+
+export function deleteActivity(id) {
+  return async function (dispatch) {
+    await fetch(`http://www.localhost:3001/activities/${id}`, {
+      method: "DELETE",
+    });
+    return dispatch({ type: DELETE_COUNTRY_ACTIVITY, payload: id });
   }
 }

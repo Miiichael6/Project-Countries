@@ -34,17 +34,6 @@ const Form = () => {
   return (
     <div className={`${F.FormasDeOrdenamiento}`}>
       <div>
-        <label htmlFor="ordernamiento">orden: </label>
-        <br />
-        <select id="ordenamiento" onChange={(e) => handlerChangeOrder(e)}>
-          <option value="">Normal</option>
-          <option value="a-z">A-Z</option>
-          <option value="a-z-desc">Z-A</option>
-          <option value="population">Poblacion</option>
-          <option value="population-desc">Poblacion-descendiente</option>
-        </select>
-      </div>
-      <div>
         <label htmlFor="continent">Continente: </label>
         <br />
         <select id="continent" onChange={(e) => handlerChangeFilter(e)}>
@@ -56,6 +45,17 @@ const Form = () => {
           <option value="North America">North America</option>
           <option value="Africa">Africa</option>
           <option value="South America">South America</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="ordernamiento">orden: </label>
+        <br />
+        <select id="ordenamiento" onChange={(e) => handlerChangeOrder(e)}>
+          <option value="">Normal</option>
+          <option value="a-z">A-Z</option>
+          <option value="a-z-desc">Z-A</option>
+          <option value="population">Poblacion</option>
+          <option value="population-desc">Poblacion-descendiente</option>
         </select>
       </div>
       <div>

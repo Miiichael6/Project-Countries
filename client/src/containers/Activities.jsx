@@ -47,7 +47,7 @@ const Activities = () => {
           </div>
         ))
       ) : (
-        <h2>No creaste Actividades :(</h2>
+        <h2>Sin Actividades</h2>
       )}
     </div>
   );

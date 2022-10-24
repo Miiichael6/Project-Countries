@@ -78,7 +78,7 @@ export default function reducerMain(state = initialState, action) {
           allCountries: dataCopy.sort((a, b) => a.poblacion - b.poblacion),
         };
       } else {
-        return { ...state, allCountries: state.allCountriesCopy };
+        return { ...state, allCountries: dataNormal };
       }
     //  *=========
     case GET_ALL_ACTIVITIES:

@@ -177,6 +177,7 @@ const CreateActivityForm = () => {
               type="text"
               name="nombre"
               value={nombre}
+              placeholder="Escribe una Actividad"
               onChange={(e) => handlerChange(e)}
               autoComplete={"off"}
               className={`${nombreErr ? ACM.incorrectNom : ACM.correctNom}`}
@@ -216,6 +217,7 @@ const CreateActivityForm = () => {
                 value={duracion}
                 onChange={(e) => handlerChange(e)}
                 autoComplete="off"
+                placeholder="hora(s)"
                 className={duracionErr ? ACM.incorrectDur : ACM.correctDur}
               />
             </div>

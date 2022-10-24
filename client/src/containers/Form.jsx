@@ -51,11 +51,11 @@ const Form = () => {
         <label htmlFor="ordernamiento">orden: </label>
         <br />
         <select id="ordenamiento" onChange={(e) => handlerChangeOrder(e)}>
-          <option value="">Normal</option>
+          <option value="">---</option>
           <option value="a-z">A-Z</option>
           <option value="a-z-desc">Z-A</option>
-          <option value="population">Poblacion</option>
-          <option value="population-desc">Poblacion-descendiente</option>
+          <option value="population">Mayor-Menor Poblacion</option>
+          <option value="population-desc">Menor-Mayor Poblacion</option>
         </select>
       </div>
       <div>

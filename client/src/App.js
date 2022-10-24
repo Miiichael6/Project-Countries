@@ -6,7 +6,7 @@ import NavBar from "./containers/NavBar";
 import ActivityCreate from "./containers/activityCreate";
 import Error404 from "./components/Error404";
 import Footer from "./components/Footer";
-// import About from "./components/About";
+import About from "./components/About";
 import Activities from "./containers/Activities";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
         </Route>
         <Route exact path={"/about"}>
           <NavBar />
-          {/* <About /> */}
+          <About />
           <Footer />
         </Route>
         <Route exact path={"/activities"}>

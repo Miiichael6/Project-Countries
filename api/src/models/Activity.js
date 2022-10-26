@@ -6,6 +6,7 @@ const Activity = (sequelize) => {
     {
       nombre: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       dificultad: {
         type: DataTypes.INTEGER,
@@ -16,7 +17,7 @@ const Activity = (sequelize) => {
         },
       },
       duracion: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER, // * horas
         allowNull: false
       },
       temporada: {

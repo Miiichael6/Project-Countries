@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchCountries } from "../actions/actionsMain";
 import S from "../styles/Search.module.css";
 
-const SearchBar = () => {
+const SearchBar = ({ setToFirstPage }) => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [error, setError] = useState(true);
@@ -22,12 +22,11 @@ const SearchBar = () => {
     setSearch(e.target.value);
   };
 
-  useEffect(() => {}, [error, search, dispatch]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!error) dispatch(searchCountries(search));
     setSearch("");
+    setToFirstPage();
   };
 
   return (
@@ -38,7 +37,9 @@ const SearchBar = () => {
           name="search"
           id="search"
           placeholder="Busca un Pais..."
-          className={`${S.InputSearch} ${error && search.length > 0 ? S.errors : S.sucess}`}
+          className={`${S.InputSearch} ${
+            error && search.length > 0 ? S.errors : S.sucess
+          }`}
           value={search}
           onChange={(e) => handlerChange(e)}
           autoComplete="off"

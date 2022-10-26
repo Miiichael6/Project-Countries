@@ -9,35 +9,38 @@ import {
   SEARCH_COUNTRIES,
   WAY_TO_ORDER_COUNTRIES,
 } from "../types/typesMain";
+import axios from "axios";
+
+const host = "http://localhost:3001";
 
 export function getAllCountries() {
   return async function (dispatch) {
-    try {
-      const res = await fetch(`http://localhost:3001/countries`);
-      const data = await res.json();
-      return dispatch({ type: GET_ALL_COUNTRIES, payload: data });
-    } catch (err) {
-      console.log(err);
-    }
+    return axios
+      .get(`${host}/countries`)
+      .then((res) => res.data)
+      .then((data) => dispatch({ type: GET_ALL_COUNTRIES, payload: data }))
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
 
 export function getCountryDetail(id) {
-  return async function (dispatch) {
-    try {
-      const res = await fetch(`http://localhost:3001/countries/${id}`);
-      const data = await res.json();
-      return dispatch({ type: GET_COUNTRY_DETAIL, payload: data });
-    } catch (err) {
-      console.log(err);
-    }
+  return function (dispatch) {
+    return axios
+      .get(`${host}/countries/${id}`)
+      .then((res) => res.data)
+      .then((data) => dispatch({ type: GET_COUNTRY_DETAIL, payload: data }))
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
 
 export function searchCountries(data) {
   return async function (dispatch) {
     try {
-      const res = await fetch(`http://localhost:3001/countries?name=${data}`);
+      const res = await fetch(`${host}/countries?name=${data}`);
       const value = await res.json();
       return dispatch({ type: SEARCH_COUNTRIES, payload: value });
     } catch (err) {
@@ -48,14 +51,37 @@ export function searchCountries(data) {
 
 export function addCountryActivity(data) {
   return async function (dispatch) {
-    const response = await fetch("http://localhost:3001/activities", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return { type: ADD_COUNTRY_ACTIVITY, payload: response };
+    const response = await axios.post(`${host}/activities`, data);
+    return dispatch({ type: ADD_COUNTRY_ACTIVITY, payload: response });
+  };
+}
+
+// ***********************************************
+
+export function getAllActivities() {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get(`http://www.localhost:3001/activities`);
+      const value = await res.data;
+      return dispatch({ type: GET_ALL_ACTIVITIES, payload: value });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+}
+
+export function deleteActivity(id) {
+  return async function (dispatch) {
+    axios.delete(`http://www.localhost:3001/activities/${id}`);
+
+    return dispatch({ type: DELETE_COUNTRY_ACTIVITY, payload: id });
+  };
+}
+
+export function filterByActivities(activity) {
+  return {
+    type: FILTER_BY_ACTIVITIES,
+    payload: activity,
   };
 }
 
@@ -71,34 +97,4 @@ export function wayToOrderCountries(way) {
     type: WAY_TO_ORDER_COUNTRIES,
     payload: way,
   };
-}
-
-// ***********************************************
-
-export function getAllActivities() {
-  return async function (dispatch) {
-    try {
-      const res = await fetch(`http://www.localhost:3001/activities`);
-      const value = await res.json();
-      return dispatch({ type: GET_ALL_ACTIVITIES, payload: value });
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-}
-
-export function filterByActivities(activity) {
-  return {
-    type: FILTER_BY_ACTIVITIES,
-    payload: activity,
-  };
-}
-
-export function deleteActivity(id) {
-  return async function (dispatch) {
-    await fetch(`http://www.localhost:3001/activities/${id}`, {
-      method: "DELETE",
-    });
-    return dispatch({ type: DELETE_COUNTRY_ACTIVITY, payload: id });
-  }
 }

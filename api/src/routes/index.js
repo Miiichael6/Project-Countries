@@ -3,7 +3,7 @@ const { Country, Activity } = require("../db");
 const GET_ALL_DATA = require("../GET_ALL_DATA");
 // Importar todos los routerCountriess;
 // Ejemplo: const authrouterCountries = require('./auth.js');
-const routerCountries = Router();
+const routerCountries = Router(); // ? /countries
 
 // ? ********************Manejo de Rutas|| COUNTRY *********************
 

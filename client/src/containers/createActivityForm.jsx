@@ -46,7 +46,8 @@ const CreateActivityForm = () => {
       dificultadErr: false,
       countryIdErr: false,
     });
-    setNoSelect(false)
+    setNoSelect(false);
+    setCountriesAct([]);
   };
 
   useEffect(() => {
@@ -93,11 +94,10 @@ const CreateActivityForm = () => {
   };
 
   const handleSelects = (e) => {
-    // console.log(dificultad, countryId, temporada);
-    if (!dificultad || !countryId.length || !temporada) {
-      setNoSelect(true)
-    }else {
-      setNoSelect(false)
+    if (!dificultad || countryId.length < 1 || !temporada) {
+      setNoSelect(true);
+    } else {
+      setNoSelect(false);
     }
   };
 
@@ -127,8 +127,8 @@ const CreateActivityForm = () => {
   };
 
   const deleteCountry = (cod) => {
-    const updateData = countriesAct.filter((i) => i.id !== cod);
-    setCountriesAct([...updateData]);
+    const deletedData = countriesAct.filter((i) => i.id !== cod);
+    setCountriesAct([...deletedData]);
 
     const filtrado = form.countryId.filter((dt) => dt !== cod);
     setForm({
@@ -139,7 +139,8 @@ const CreateActivityForm = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    if (!dificultad || !countryId.length || !temporada) handleSelects();
+    if (!dificultad || !countryId.length || !temporada || !nombre || !duracion)
+      handleSelects();
     else {
       alert("actividad creada");
       dispatch(addCountryActivity(form));
@@ -156,7 +157,8 @@ const CreateActivityForm = () => {
         dificultadErr: false,
         countryIdErr: false,
       });
-      setNoSelect(false)
+      setNoSelect(false);
+      setCountriesAct([]);
     }
   };
 
@@ -236,11 +238,13 @@ const CreateActivityForm = () => {
               onChange={(e) => handlerPaises(e)}
             >
               <option value="">---</option>
-              {paises.map((i) => (
-                <option key={i.id} value={i.id}>
-                  {i.nombre_spa}
-                </option>
-              ))}
+              {paises
+                .sort((a, b) => a.nombre_spa.localeCompare(b.nombre_spa))
+                .map((i) => (
+                  <option key={i.id} value={i.id}>
+                    {i.nombre_spa}
+                  </option>
+                ))}
             </select>
             {countryIdErr && <span>Elige almenos un pais</span>}
           </div>

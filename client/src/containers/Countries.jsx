@@ -10,36 +10,43 @@ const Countries = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.reducerMain.allCountries);
   const [currentPage, setCurrentPage] = useState(1);
-  const [countryPerPage, setCountryPerPage] = useState(9);
+  const [countryPerPage] = useState(10);
 
   useEffect(() => {
     dispatch(getAllCountries());
     return () => {
       dispatch(getAllCountries([]));
     };
-  }, []);
+  }, [dispatch]);
 
-  useEffect(() => {
-    if (currentPage !== 1) {
-      setCountryPerPage(10);
-    } else setCountryPerPage(9);
-  }, [currentPage]);
+  const indexOfLastCountries = currentPage * countryPerPage;
+  const indexOfFirstCountries = indexOfLastCountries - countryPerPage; //* 10 - 10 = 0 / 20 - 10, etc etc
+  let currentCountries;
 
-  const indexOfLastCountries = currentPage * countryPerPage; //? 1 * 10
-  const indexOfFirstCountries = indexOfLastCountries - countryPerPage;
-  let currentCountries = data.slice(
-    indexOfFirstCountries,
-    indexOfLastCountries
-  );
+  if (currentPage === 1) {
+    currentCountries = data.slice(
+      indexOfFirstCountries, // 
+      indexOfLastCountries - 1 // 
+    ); // ? 40, 49 = [...,    ,...] * [1  ...   9]
+  } else {
+    currentCountries = data.slice(
+      indexOfFirstCountries,
+      indexOfLastCountries
+    ); // ? 40, 50 = [...,    ,...] [40  ...   50]
+  }
 
   const paginate = (e, pageNumber) => {
-    e.preventDefault();
+    // e.preventDefault();
     setCurrentPage(pageNumber);
   };
 
+  const setToFirstPage = () => {
+    setCurrentPage(1);
+  }
+
   return (
     <div>
-      <SearchBar />
+      <SearchBar setToFirstPage={setToFirstPage}/>
       <Form />
       <Paginacion
         countryPerPage={countryPerPage}

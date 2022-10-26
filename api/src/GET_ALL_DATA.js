@@ -44,5 +44,3 @@ const GET_ALL_DATA = async () => {
 
 module.exports = GET_ALL_DATA;
 
-
-console.log("none")

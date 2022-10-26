@@ -8,11 +8,9 @@ const Paginacion = ({ countryPerPage, dataLength, paginate }) => {
   // * dependiendo de dataLength, cambiará y se dividirá entre 10
   // * redondeando hacia arriba
   // * hacia arriba
-  let longitud = Math.ceil(dataLength / countryPerPage);
-  let longTotal =
-    countryPerPage === 9 && dataLength === 250 ? longitud - 3 : longitud;
+  let longitud = Math.ceil(dataLength / 10);
 
-  for (let i = 1; i <= longTotal; i++) {
+  for (let i = 1; i <= longitud; i++) {
     pageNumbers.push(i);
   }
 
@@ -22,7 +20,7 @@ const Paginacion = ({ countryPerPage, dataLength, paginate }) => {
         {pageNumbers.map((i) => (
           <li key={i}>
             <Link
-              className={Pag.pagina_1}
+              className={Pag}
               to={"/countries"}
               onClick={(e) => paginate(e, i)}
             >

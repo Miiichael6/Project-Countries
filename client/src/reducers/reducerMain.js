@@ -103,7 +103,7 @@ export default function reducerMain(state = initialState, action) {
         ...state,
         allCountries: allCountryFiltered,
       };
-
+    // * ==========
     case DELETE_COUNTRY_ACTIVITY:
       const activityFilter = JSON.parse(JSON.stringify(state.allActivities))
       const filtrado = activityFilter.filter(i => i.id !== action.payload) 

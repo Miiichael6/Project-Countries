@@ -32,30 +32,6 @@ routerActivities.post("/", async (req, res) => {
   }
 });
 
-// * PUT =====================================================>
-
-// routerActivities.put("/upd", async (req, res) => {
-//   try {
-//     const { id, temporada, duracion } = req.body;
-//     const dataToUpdate = await Activity.findByPk(id);
-//     if (!dataToUpdate) {
-//       throw {
-//         error: true,
-//         statusText: "Error no se encontró el Pais",
-//       };
-//     }
-//     await dataToUpdate.update({
-//       ...dataToUpdate,
-//       temporada,
-//       duracion,
-//     });
-//     return res.status(200).send(dataToUpdate);
-//   } catch (error) {
-//     if (error.statusText) return res.status(404).send(error.statusText);
-//     return res.status(404).send(error.message);
-//   }
-// });
-
 // !DELETEEE- ======================================================
 
 routerActivities.delete("/:id", async (req, res) => {
@@ -70,3 +46,30 @@ routerActivities.delete("/:id", async (req, res) => {
 });
 
 module.exports = routerActivities;
+
+
+
+
+//  PUT =====================================================>
+// routerActivities.put("/update", async (req, res) => {
+//   try {
+//     const { id, temporada, duracion, nombre, dificultad } = req.body;
+//     const dataToUpdate = await Activity.findByPk(id);
+//     if (!dataToUpdate) {
+//       throw {
+//         error: true,
+//         statusText: "Error no se encontró el Pais",
+//       };
+//     }
+//     await dataToUpdate.update({
+//       nombre,
+//       dificultad,
+//       temporada,
+//       duracion,
+//     });
+//     return res.status(200).send(dataToUpdate);
+//   } catch (error) {
+//     if (error.statusText) return res.status(404).send(error.statusText);
+//     return res.status(404).send(error.message);
+//   }
+// });

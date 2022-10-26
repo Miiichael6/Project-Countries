@@ -6,6 +6,7 @@ const GET_ALL_DATA = require("../GET_ALL_DATA");
 const routerCountries = Router(); // ? /countries
 
 // ? ********************Manejo de Rutas|| COUNTRY *********************
+GET_ALL_DATA()
 
 routerCountries.get("/", async (req, res) => {
   try {

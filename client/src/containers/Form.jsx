@@ -9,7 +9,7 @@ import {
 import F from "../styles/Form.module.css";
 // import { getOrderCountries, searchCountries } from "../actions/actionsMain";
 
-const Form = () => {
+const Form = ({setCurrentPage}) => {
   const dispatch = useDispatch();
   const activities = useSelector(
     (state) => state.reducerMain.allActivitiesCopy
@@ -21,10 +21,12 @@ const Form = () => {
 
   const handlerChangeOrder = (e) => {
     dispatch(wayToOrderCountries(e.target.value));
+    setCurrentPage(1)
   };
 
   const handlerChangeFilter = (e) => {
     dispatch(filterAllMyCountries(e.target.value));
+    setCurrentPage(1)
   };
 
   const handlerFilterByActivity = (e) => {

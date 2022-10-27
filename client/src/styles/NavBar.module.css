@@ -41,3 +41,14 @@ header div a {
     display: none;
   }
 }
+
+@media screen and (max-width: 400px) {
+  header {
+    padding: .6rem 1rem;
+    justify-content: space-between;
+  }
+
+  .CreateActivity {
+    margin: 0 3rem;
+  }
+}

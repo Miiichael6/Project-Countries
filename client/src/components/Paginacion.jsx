@@ -2,7 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Pag from "../styles/Paginacion.module.css";
 
-const Paginacion = ({ countryPerPage, dataLength, paginate }) => {
+const Paginacion = ({
+  currentPage,
+  handlePrev,
+  handleNext,
+  dataLength,
+  paginate,
+  next,
+  prev,
+}) => {
   const pageNumbers = []; // ?  [1, 2, 3, 4, ..., 24, 25]
   // ?                        original 250 / 10 = 25  i <= 25
   // * dependiendo de dataLength, cambiará y se dividirá entre 10
@@ -29,6 +37,19 @@ const Paginacion = ({ countryPerPage, dataLength, paginate }) => {
           </li>
         ))}
       </ul>
+      <div className={Pag.BotonesDeNavegacion}>
+        {prev && (
+          <button className={Pag.ButtomOfPaginado} onClick={() => handlePrev()}>
+            Prev
+          </button>
+        )}
+        <h3>{currentPage}</h3>
+        {next && (
+          <button className={Pag.ButtomOfPaginado} onClick={() => handleNext()}>
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 };

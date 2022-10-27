@@ -11,12 +11,13 @@ const Countries = () => {
   const data = useSelector((state) => state.reducerMain.allCountries);
   const [currentPage, setCurrentPage] = useState(1);
   const [countryPerPage] = useState(10);
+  const [next, setNext] = useState(true);
+  const [prev, setPrev] = useState(true);
 
   useEffect(() => {
     dispatch(getAllCountries());
-    return () => {
-      dispatch(getAllCountries([]));
-    };
+    return () => dispatch(getAllCountries());
+    
   }, [dispatch]);
 
   const indexOfLastCountries = currentPage * countryPerPage;
@@ -25,14 +26,11 @@ const Countries = () => {
 
   if (currentPage === 1) {
     currentCountries = data.slice(
-      indexOfFirstCountries, // 
-      indexOfLastCountries - 1 // 
+      indexOfFirstCountries, //
+      indexOfLastCountries - 1 //
     ); // ? 40, 49 = [...,    ,...] * [1  ...   9]
   } else {
-    currentCountries = data.slice(
-      indexOfFirstCountries,
-      indexOfLastCountries
-    ); // ? 40, 50 = [...,    ,...] [40  ...   50]
+    currentCountries = data.slice(indexOfFirstCountries, indexOfLastCountries); // ? 40, 50 = [...,    ,...] [40  ...   50]
   }
 
   const paginate = (e, pageNumber) => {
@@ -42,16 +40,48 @@ const Countries = () => {
 
   const setToFirstPage = () => {
     setCurrentPage(1);
-  }
+  };
+
+  useEffect(() => {
+    if (currentPage === 1) setPrev(false);
+    else setPrev(true);
+    if (currentPage === Math.ceil(data.length/10)) setNext(false);
+    else setNext(true);
+  }, [currentPage, data.length]);
+
+  const handlePrev = () => {
+    if (currentPage !== 1) {
+      setPrev(true);
+      setCurrentPage(currentPage - 1);
+    } else {
+      setPrev(false);
+      return;
+    }
+  };
+  const handleNext = () => {
+    if (currentPage < data.length / 10) {
+      setNext(true);
+      setCurrentPage(currentPage + 1);
+    } else {
+      setNext(false);
+      return;
+    }
+  };
+  console.log()
 
   return (
     <div>
-      <SearchBar setToFirstPage={setToFirstPage}/>
-      <Form />
+      <SearchBar setToFirstPage={setToFirstPage} />
+      <Form setCurrentPage={setCurrentPage}/>
       <Paginacion
+        handlePrev={handlePrev}
+        handleNext={handleNext}
         countryPerPage={countryPerPage}
         dataLength={data.length}
         paginate={paginate}
+        next={next}
+        prev={prev}
+        currentPage={currentPage}
       />
       {<DisplayAllCountries data={currentCountries} />}
     </div>

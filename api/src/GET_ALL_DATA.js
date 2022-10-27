@@ -18,7 +18,7 @@ const GET_ALL_DATA = async () => {
       poblacion: i.population,
     };
   });
-  
+
   const set_all = () => {
     arrData.map((el) => {
       Country.findOrCreate({
@@ -38,4 +38,3 @@ const GET_ALL_DATA = async () => {
 };
 
 module.exports = GET_ALL_DATA;
-

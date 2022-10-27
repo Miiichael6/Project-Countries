@@ -18,26 +18,21 @@ const GET_ALL_DATA = async () => {
       poblacion: i.population,
     };
   });
-  const set_all = async () => {
-    try {
-      const data = await Country.bulkCreate(arrData);
-      await data;
-    } catch (error) {
-      console.log(error.message);
-    }
-    // arrData.map((el) => {
-    //   Country.findOrCreate({
-    //     where: {
-    //       nombre: el.nombre,
-    //       id: el.id,
-    //     },
-    //     defaults: {
-    //       ...el,
-    //     },
-    //   }).catch((err) => {
-    //     console.log(err);
-    //   });
-    // });
+  
+  const set_all = () => {
+    arrData.map((el) => {
+      Country.findOrCreate({
+        where: {
+          nombre: el.nombre,
+          id: el.id,
+        },
+        defaults: {
+          ...el,
+        },
+      }).catch((err) => {
+        console.log(err);
+      });
+    });
   };
   return set_all();
 };

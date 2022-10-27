@@ -19,7 +19,7 @@ const Form = ({ setCurrentPage }) => {
     ordenamiento: "",
     activity: "",
   });
-
+  
   useEffect(() => {
     dispatch(getAllActivities());
   }, [dispatch]);

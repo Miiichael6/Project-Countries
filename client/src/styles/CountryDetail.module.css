@@ -113,6 +113,11 @@
   color: #fff;
 }
 
+.loaderPosition {
+  margin: 0 auto;
+  text-align: center;
+}
+
 @media screen and (max-width: 700px) {
   .ImgAndTextContainer {
     justify-content: center;

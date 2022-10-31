@@ -46,7 +46,7 @@ const CountryDetail = () => {
     );
   }
 
-  if (allCountries.includes(id)) {
+  if (allCountries.length > 1 && allCountries.includes(id)) {
     return (
       <div>
         <div className={`${CD.CountryDetailContain}`}>

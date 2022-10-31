@@ -37,7 +37,7 @@ const CountryDetail = () => {
       <div className={CD.ErrorNotFound}>
         <h1>Pais No existente</h1>
         <h3>
-          ID incorrecto el id debe de tener solamente <br />3 digitos
+          ID incorrecto el id debe de tener solamente <br />3 digitos o posiblemente no existe pais con el codigo,escrito
         </h3>
         <Link to={"/countries"} className={`${CD.Return}`}>
           Regresar
@@ -46,7 +46,7 @@ const CountryDetail = () => {
     );
   }
 
-  if (allCountries.length > 1 && allCountries.includes(id)) {
+  if (countryDetail.nombre && allCountries.includes(id)) {
     return (
       <div>
         <div className={`${CD.CountryDetailContain}`}>

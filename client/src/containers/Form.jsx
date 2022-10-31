@@ -7,8 +7,8 @@ import {
   wayToOrderCountries,
 } from "../actions/actionsMain";
 import F from "../styles/Form.module.css";
-// import { getOrderCountries, searchCountries } from "../actions/actionsMain";
 
+// * FORM-DE-ORDENAMIENTO;
 const Form = ({ setCurrentPage }) => {
   const dispatch = useDispatch();
   const activities = useSelector(
@@ -19,7 +19,7 @@ const Form = ({ setCurrentPage }) => {
     ordenamiento: "",
     activity: "",
   });
-  
+
   useEffect(() => {
     dispatch(getAllActivities());
   }, [dispatch]);
@@ -32,7 +32,7 @@ const Form = ({ setCurrentPage }) => {
     setValues({
       ...values,
       [name]: value,
-    })
+    });
   };
 
   const handlerChangeFilter = (e) => {
@@ -44,8 +44,8 @@ const Form = ({ setCurrentPage }) => {
       ...values,
       [name]: value,
       ordenamiento: "",
-      activity: ""
-    })
+      activity: "",
+    });
   };
 
   const handlerFilterByActivity = (e) => {
@@ -58,7 +58,7 @@ const Form = ({ setCurrentPage }) => {
       [name]: value,
       continent: "",
       ordenamiento: "",
-    })
+    });
   };
 
   return (
@@ -90,7 +90,7 @@ const Form = ({ setCurrentPage }) => {
           name="ordenamiento"
           onChange={(e) => handlerChangeOrder(e)}
           value={values.ordenamiento}
-          >
+        >
           <option value="">---</option>
           <option value="a-z">A-Z</option>
           <option value="a-z-desc">Z-A</option>

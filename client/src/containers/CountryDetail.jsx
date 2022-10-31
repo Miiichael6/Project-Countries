@@ -11,27 +11,39 @@ const CountryDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const countryDetail = useSelector((state) => state.reducerMain.countryDetail);
-
+  
   useEffect(() => {
     setLoader(true);
     dispatch(getCountryDetail(id));
     setLoader(false);
-
+    
     return () => {
       dispatch(getCountryDetail({}));
     };
-  }, [id, dispatch]);
+  }, []);
 
-  const none = id.length < 4 && Object.entries(countryDetail).length > 1;
+  if (id.length !== 3) {
+    return (
+      <div className={CD.ErrorNotFound}>
+        <h1>Pais No existente</h1>
+        <h3>
+          ID incorrecto el id debe de tener solamente <br />3 digitos
+        </h3>
+        <Link to={"/countries"} className={`${CD.Return}`}>
+          Regresar
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <>
       {loader && (
-        <div style={{ marginLeft: "25%" }}>
+        <div style={{ marginLeft: "38%" }}>
           <Loader />
         </div>
       )}
-      {id.length < 4 && Object.entries(countryDetail).length > 1 && (
+      {id.length === 3 && Object.entries(countryDetail).length > 1 && (
         <div>
           <div className={`${CD.CountryDetailContain}`}>
             {countryDetail.nombre && (
@@ -79,19 +91,9 @@ const CountryDetail = () => {
           </div>
         </div>
       )}
-      {!none && (
-        <div style={{ color: "white", textAlign: "center" }}>
-          <h1 style={{ marginTop: "15rem", marginBottom: "2rem" }}>
-            No se encontró el pais
-          </h1>
-          <h3 style={{ color: "#f2f2f2" }}>id incorrecto</h3>
-          <Link to={"/countries"} className={`${CD.Return}`}>
-            Regresar
-          </Link>
-        </div>
-      )}
     </>
   );
 };
 
+// Hola Antony Muy buenas Tardes, me acabo de Percatar que se Sacaron de mi grupo, hubo un inconveniente con lo del tema de mi PI ,la luz se fue en todo mi vecindario y no pude dar mi defensa , le llamé a un compañero mío para que pueda hacer visible mi problema y le Avisó a Cecilia Morlacchi, ya que yo hice todo mi PI, y me considero con todas las capacidades de poder seguir con el PF, pero por dicho problema de Electricidad Sin previo aviso de la Compañía de Luz se me hizo injusto que no pueda dar mi defensa. Cecilia , Mi Evaluadora dijo que haría visible mi Caso y que se lo llevaría  a la directiva y me daría una respuesta hasta el lunes. ya que el tema de la electricidad fue algo imprevisto. no sé si podría recuperarlo.
 export default CountryDetail;

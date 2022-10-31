@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Activity } = require("../db");
 
-const routerActivities = Router();
+const routerActivities = Router(); // /activities
 
 routerActivities.get("/", async (req, res) => {
   try {

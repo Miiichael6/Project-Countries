@@ -20,7 +20,7 @@ const Countries = () => {
     
   }, [dispatch]);
 
-  const indexOfLastCountries = currentPage * countryPerPage;
+  const indexOfLastCountries = currentPage * countryPerPage; 
   const indexOfFirstCountries = indexOfLastCountries - countryPerPage; //* 10 - 10 = 0 / 20 - 10, etc etc
   let currentCountries;
 
@@ -67,7 +67,6 @@ const Countries = () => {
       return;
     }
   };
-  console.log()
 
   return (
     <div>

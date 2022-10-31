@@ -93,14 +93,25 @@
   border-radius: .8rem;
 }
 
-.Container2 {
-  /* background-color: rgb(212, 142, 11); */
-  /* padding: 1.4rem; */
-  /* font-size: 2rem;
+/* .Container2 { 
+  background-color: rgb(212, 142, 11);
+  padding: 1.4rem; 
+  font-size: 2rem;
   border-radius: .4rem;
-  border: 3px solid rgb(155, 9, 9); */
-}
+  border: 3px solid rgb(155, 9, 9);
+} */
 
+
+.ErrorNotFound {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+}
 
 @media screen and (max-width: 700px) {
   .ImgAndTextContainer {

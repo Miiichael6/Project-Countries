@@ -66,7 +66,7 @@ const CountryDetail = () => {
                   <b>Continent:</b> {countryDetail.continente}
                 </h2>
                 <p>
-                  <b>codigo:</b> {countryDetail.id.toUpperCase()}
+                  <b>código:</b> {countryDetail.id.toUpperCase()}
                 </p>
                 <p>
                   <b>Population:</b> {countryDetail.poblacion}

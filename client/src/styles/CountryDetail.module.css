@@ -118,6 +118,15 @@
   text-align: center;
 }
 
+.CountryDetailContain h2{
+  font-size: 2rem;
+}
+
+.CountryDetailContain p {
+  font-size: 1.7rem;
+}
+
+
 @media screen and (max-width: 700px) {
   .ImgAndTextContainer {
     justify-content: center;
@@ -129,6 +138,17 @@
   }
 
   .ImgCountryContain {
-    height: 200px;
+    height:  240px;
+  }
+
+  .CountryDetailContain p {
+    font-size: 1.2rem;
+  }
+  
+}
+
+@media screen and (max-width: 1000px) {
+  .ImgAndTextContainer img {
+    height: 260px;
   }
 }

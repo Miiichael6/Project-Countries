@@ -1,8 +1,7 @@
 const { Router } = require("express");
 const { Country, Activity } = require("../db");
 const GET_ALL_DATA = require("../GET_ALL_DATA");
-// Importar todos los routerCountriess;
-// Ejemplo: const authrouterCountries = require('./auth.js');
+
 const routerCountries = Router(); // ? /countries
 
 // ? ********************Manejo de Rutas|| COUNTRY *********************
@@ -25,9 +24,10 @@ routerCountries.get("/", async (req, res) => {
       );
       if (country.length !== 250) return res.status(200).send(country);
 
+      if(country.length === 0)
       throw {
         error: true,
-        statusText: `no se encontró el Pais con el nombre: ${name}`,
+        statusText: `no se encontró el/los Pais(es)`,
       };
     }
   } catch (err) {
@@ -45,18 +45,15 @@ routerCountries.get("/:id", async (req, res) => {
 
     const searchByID = await Country.findAll({
       where: {
-        id: tUC,
+        id: tUC, 
       },
       include: Activity,
     });
-    if (searchByID.activities < 0) {
-      await searchByID[0].update();
-    }
 
-    if (!searchByID) {
+    if (searchByID.length === 0) {
       throw {
         error: 404,
-        statusText: `ruta de ID: =>${id}<= no encontrada. recuerde que el ID contiene solamente 3 letras`,
+        statusText: `ruta de ID: =>${id}<= no encontrada. y recuerde que el ID contiene solamente 3 letras`,
       };
     }
 

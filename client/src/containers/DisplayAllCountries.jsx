@@ -3,6 +3,7 @@ import Country from "./Country";
 import Loader from "../components/Loader";
 import Sections from "../styles/Sections.module.css";
 import { useSelector } from "react-redux";
+const stylee = { color: "#fff", marginTop: "17rem" };
 
 const DisplayAllCountries = ({ data }) => {
   const [loader, setLoader] = useState(false);
@@ -21,13 +22,11 @@ const DisplayAllCountries = ({ data }) => {
     data = countries;
   }
 
-  const stylee = { color: "#fff", marginTop: "17rem" };
-
   return (
     <section id={"Section"} className={Sections.SectionCoutriesLoad}>
       {loader && <Loader />}
       {data.length === 0 && !loader && (
-        <h1 style={stylee}>No se Encontró el Pais</h1>
+        <h1 style={stylee}>No se Encontró el/los Pais(es)</h1>
       )}
       {data.length &&
         data.map((i) => (
@@ -49,7 +48,3 @@ const DisplayAllCountries = ({ data }) => {
 };
 
 export default DisplayAllCountries;
-
-// jinna loves the music but , her friend don't like the music
-
-// jina and her boyfriend , decide to go on a trip to Canada but his boyfriend prefer to go to Mexico

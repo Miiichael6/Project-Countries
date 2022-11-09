@@ -17,13 +17,14 @@ routerActivities.get("/", async (req, res) => {
 routerActivities.post("/", async (req, res) => {
   try {
     const { nombre, dificultad, duracion, temporada, countryId } = req.body;
-    console.log(req.body);
+
     const newActivity = await Activity.create({
       nombre,
       dificultad: parseInt(dificultad),
       duracion: parseInt(duracion),
       temporada,
     });
+
     await newActivity.addCountries(countryId);
 
     return res.status(200).send(newActivity);
@@ -32,13 +33,15 @@ routerActivities.post("/", async (req, res) => {
   }
 });
 
-// !DELETEEE- ======================================================
+// !DELETEEE ===============================================>
 
 routerActivities.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const dataToDelete = await Activity.findByPk(id);
-    await dataToDelete.destroy();
+    // otra forma de encontrar ID
+    // Activty.findAll({ where : { id : id }})
+    await dataToDelete.destroy(); // ! eliminacion de activity
     return res.status(200).send("Eliminado correctamente");
   } catch (error) {
     return res.status(404).send(error.message);
@@ -46,6 +49,38 @@ routerActivities.delete("/:id", async (req, res) => {
 });
 
 module.exports = routerActivities;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

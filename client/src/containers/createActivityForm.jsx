@@ -32,6 +32,7 @@ const CreateActivityForm = () => {
   const [countriesAct, setCountriesAct] = useState([]);
   const [noSelect, setNoSelect] = useState(false);
 
+  // restablece el formulario
   const reset = () => {
     setForm({
       nombre: "",
@@ -72,6 +73,7 @@ const CreateActivityForm = () => {
       data = Number(data);
       if (typeof data === "number") {
         if (data > 0 && data < 25) {
+          // horas
           setError({ ...error, duracionErr: false });
         } else {
           setError({ ...error, duracionErr: true });
@@ -94,7 +96,7 @@ const CreateActivityForm = () => {
   };
 
   const handleSelects = (e) => {
-    if (!dificultad || countryId.length < 1 || !temporada) {
+    if (!dificultad || countryId.length === 0 || !temporada) {
       setNoSelect(true);
     } else {
       setNoSelect(false);
@@ -102,24 +104,27 @@ const CreateActivityForm = () => {
   };
 
   const handlerBlur = (e) => {
+    // [dificultad , countryId, Temporada] // controladores de error
     let value = e.target.value;
     const name = e.target.name;
-    // console.log(value);
-    if (!value) {
-      setError({ ...error, [`${name}Err`]: true });
-    } else {
+    if (!value) setError({ ...error, [`${name}Err`]: true });
+    else setError({ ...error, [`${name}Err`]: false });
+
+    if (name === "countryId" && countryId.length > 0) {
       setError({ ...error, [`${name}Err`]: false });
     }
   };
 
   const handlerPaises = (e) => {
-    if (e.target.value === "") return;
+    // verificacion para que no haya actividades repetidas
+    if (e.target.value === "") return; // que no añada si esta vacio
     if (form.countryId.includes(e.target.value)) {
+      // no repetidos
       return alert("Ya existe ese Pais en actividades");
     }
 
     const findCountry = paises.find((i) => i.id === e.target.value);
-    setCountriesAct([...countriesAct, findCountry]);
+    setCountriesAct([...countriesAct, findCountry]); // lista de paises
     setForm({
       ...form,
       countryId: [...form.countryId, e.target.value],
@@ -127,6 +132,7 @@ const CreateActivityForm = () => {
   };
 
   const deleteCountry = (cod) => {
+    // eliminar paises de el estado y de el formulario
     const deletedData = countriesAct.filter((i) => i.id !== cod);
     setCountriesAct([...deletedData]);
 

@@ -14,7 +14,7 @@ const Activities = () => {
 
   const handleDelete = (id) => {
     const areYouSure$ = window.confirm(
-      "Estas Seguro(a) de borrar esta actividad? , esto la borrará en todos los paises "
+      "Estas Seguro(a) de borrar esta actividad? , esto la borrará en todos los paises relacionados"
     );
     if (areYouSure$) {
       dispatch(deleteActivity(id));

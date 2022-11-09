@@ -11,10 +11,10 @@ import {
 } from "../types/typesMain";
 import axios from "axios";
 
-// const host = "http://localhost:3001";
+// const hostName = "http://localhost:3001";
 
 export function getAllCountries() {
-  return async function (dispatch) {
+  return function (dispatch) {
     return axios
       .get(`/countries`)
       .then((res) => res.data)
@@ -78,6 +78,7 @@ export function deleteActivity(id) {
   };
 }
 
+// Filtro mis paises por als actividades que se crean 
 export function filterByActivities(activity) {
   return {
     type: FILTER_BY_ACTIVITIES,
@@ -85,6 +86,7 @@ export function filterByActivities(activity) {
   };
 }
 
+// filtrado por Continente
 export function filterAllMyCountries(data) {
   return {
     type: FILTER_ALL_MY_COUNTRIES,
@@ -92,9 +94,17 @@ export function filterAllMyCountries(data) {
   };
 }
 
+// Maneras de ordenar mis paises z-a a-z poblacion
 export function wayToOrderCountries(way) {
   return {
     type: WAY_TO_ORDER_COUNTRIES,
     payload: way,
   };
+}
+
+export function poblacionMenorAMil(value){
+  return {
+    type: "MENOR_A_MILL",
+    payload: value
+  }
 }

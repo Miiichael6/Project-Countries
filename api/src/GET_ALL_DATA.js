@@ -19,6 +19,8 @@ const GET_ALL_DATA = async () => {
     };
   });
 
+  // console.log(RESULT.data)
+
   const set_all = () => {
     arrData.map((el) => {
       Country.findOrCreate({
@@ -30,7 +32,7 @@ const GET_ALL_DATA = async () => {
           ...el,
         },
       }).catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
     });
   };

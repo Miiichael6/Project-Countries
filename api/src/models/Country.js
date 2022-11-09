@@ -1,6 +1,9 @@
 const { DataTypes } = require("sequelize");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
+
+// ! no olvidar mostrar las Relaciones y la tabla intermedia
+
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
@@ -17,7 +20,7 @@ module.exports = (sequelize) => {
       },
       nombre_spa: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: true,
       },
       img_bandera: {
         type: DataTypes.STRING,

@@ -17,24 +17,24 @@ const Countries = () => {
   useEffect(() => {
     dispatch(getAllCountries());
     return () => dispatch(getAllCountries());
-    
   }, [dispatch]);
 
-  const indexOfLastCountries = currentPage * countryPerPage; 
-  const indexOfFirstCountries = indexOfLastCountries - countryPerPage; //* 10 - 10 = 0 / 20 - 10, etc etc
+  const indexOfLastCountries = currentPage * countryPerPage;
+  const indexOfFirstCountries = indexOfLastCountries - countryPerPage; // 10 - 10 = 0 / 20 - 10, etc etc
   let currentCountries;
 
+  // Logica de 1 en el primero 9 y 10 en los demas
   if (currentPage === 1) {
     currentCountries = data.slice(
       indexOfFirstCountries, //
       indexOfLastCountries - 1 //
-    ); // ? 40, 49 = [...,    ,...] * [1  ...   9]
+    ); //  40, 49 = [...,    ,...] * [1  ...   9]
   } else {
-    currentCountries = data.slice(indexOfFirstCountries, indexOfLastCountries); // ? 40, 50 = [...,    ,...] [40  ...   50]
+    currentCountries = data.slice(indexOfFirstCountries, indexOfLastCountries); //  40, 50 = [...,    ,...] [40  ...   50]
   }
 
   const paginate = (e, pageNumber) => {
-    // e.preventDefault();
+    e.preventDefault();
     setCurrentPage(pageNumber);
   };
 
@@ -45,7 +45,7 @@ const Countries = () => {
   useEffect(() => {
     if (currentPage === 1) setPrev(false);
     else setPrev(true);
-    if (currentPage === Math.ceil(data.length/10)) setNext(false);
+    if (currentPage === Math.ceil(data.length / 10)) setNext(false);
     else setNext(true);
   }, [currentPage, data.length]);
 
@@ -68,10 +68,11 @@ const Countries = () => {
     }
   };
 
+  // explicar la paginacion
   return (
     <div>
       <SearchBar setToFirstPage={setToFirstPage} />
-      <Form setCurrentPage={setCurrentPage}/>
+      <Form setCurrentPage={setCurrentPage} />
       <Paginacion
         handlePrev={handlePrev}
         handleNext={handleNext}

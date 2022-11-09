@@ -11,7 +11,6 @@ const ActivitiesDetailList = ({ countryDetail }) => {
             <p>duracion: {i.duracion} horas</p>
             <p>dificultad: {i.dificultad}/5</p>
             <p>Temporada: {i.temporada}</p>
-            {console.log(i)}
           </div>
         ))
       ) : (

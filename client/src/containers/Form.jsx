@@ -4,11 +4,12 @@ import {
   filterAllMyCountries,
   filterByActivities,
   getAllActivities,
+  poblacionMenorAMil,
   wayToOrderCountries,
 } from "../actions/actionsMain";
 import F from "../styles/Form.module.css";
 
-// * FORM-DE-ORDENAMIENTO;
+// * FORM-DE-ORDENAMIENTO Y Filtrado;
 const Form = ({ setCurrentPage }) => {
   const dispatch = useDispatch();
   const activities = useSelector(
@@ -25,6 +26,7 @@ const Form = ({ setCurrentPage }) => {
   }, [dispatch]);
 
   const handlerChangeOrder = (e) => {
+    // formas de ordenamiento
     dispatch(wayToOrderCountries(e.target.value));
     setCurrentPage(1);
     const name = e.target.name;
@@ -36,6 +38,7 @@ const Form = ({ setCurrentPage }) => {
   };
 
   const handlerChangeFilter = (e) => {
+    // filtrado por continentes
     dispatch(filterAllMyCountries(e.target.value));
     setCurrentPage(1);
     const name = e.target.name;
@@ -49,6 +52,7 @@ const Form = ({ setCurrentPage }) => {
   };
 
   const handlerFilterByActivity = (e) => {
+    // Filtrar por actividades creadas
     dispatch(filterByActivities(e.target.value));
     setCurrentPage(1);
     const name = e.target.name;
@@ -59,6 +63,14 @@ const Form = ({ setCurrentPage }) => {
       continent: "",
       ordenamiento: "",
     });
+  };
+
+  const handlerThousent = (e) => {
+    // const name = e.target.name;
+    const value = e.target.value;
+    
+    dispatch(poblacionMenorAMil(value));
+    setCurrentPage(1)  
   };
 
   return (
@@ -113,6 +125,18 @@ const Form = ({ setCurrentPage }) => {
               {i.nombre}
             </option>
           ))}
+        </select>
+      </div>
+      <div>
+        <label htmlFor="">Mas Filtros</label>
+        <br />
+      <select
+          name="menor-a-mil"
+          // value={}
+          onChange={(e) => handlerThousent(e)}
+        >
+          <option value="">---</option>
+          <option value="999">poblacion menor a 1000</option>
         </select>
       </div>
     </div>

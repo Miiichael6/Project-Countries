@@ -32,12 +32,14 @@ const CountryDetail = () => {
     allCountries.length > 1 &&
     !allCountries.includes(id) &&
     (id.length !== 3 || !allCountries.includes(id))
+    //en caso de que sea igual a 3 pero que no exista en la db
   ) {
     return (
       <div className={CD.ErrorNotFound}>
-        <h1>Pais No existente</h1>
+        <h1 style={{ color: "red" }}>Pais No existente</h1>
         <h3>
-          ID incorrecto el id debe de tener solamente <br />3 digitos o posiblemente no existe pais con el codigo,escrito
+          ID incorrecto el id debe de tener solamente <br />3 digitos o
+          posiblemente no existe pais con el codigo escrito
         </h3>
         <Link to={"/countries"} className={`${CD.Return}`}>
           Regresar
@@ -104,5 +106,4 @@ const CountryDetail = () => {
   }
 };
 
-// Hola Antony Muy buenas Tardes, me acabo de Percatar que se Sacaron de mi grupo, hubo un inconveniente con lo del tema de mi PI ,la luz se fue en todo mi vecindario y no pude dar mi defensa , le llamé a un compañero mío para que pueda hacer visible mi problema y le Avisó a Cecilia Morlacchi, ya que yo hice todo mi PI, y me considero con todas las capacidades de poder seguir con el PF, pero por dicho problema de Electricidad Sin previo aviso de la Compañía de Luz se me hizo injusto que no pueda dar mi defensa. Cecilia , Mi Evaluadora dijo que haría visible mi Caso y que se lo llevaría  a la directiva y me daría una respuesta hasta el lunes. ya que el tema de la electricidad fue algo imprevisto. no sé si podría recuperarlo.
 export default CountryDetail;

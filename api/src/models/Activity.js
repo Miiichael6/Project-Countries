@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 
+// ! no olvidar mostrar las Relaciones y la tabla intermediaa
+
 const Activity = (sequelize) => {
   sequelize.define(
     "activity",

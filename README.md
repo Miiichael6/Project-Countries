@@ -1,6 +1,4 @@
-
-# Individual Project - Henry
-
+Project
 ## Objetivos del Proyecto
 
 - Construir una App utlizando React, Redux, Node y Sequelize.

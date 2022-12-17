@@ -1,10 +1,6 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-# Individual Project - Henry Countries
-
-<p align="left">
-  <img height="200" src="./countries.png" />
-</p>
+# Individual Project - Henry
 
 ## Objetivos del Proyecto
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   ADD_COUNTRY_ACTIVITY,
   DELETE_COUNTRY_ACTIVITY,
@@ -9,7 +10,6 @@ import {
   SEARCH_COUNTRIES,
   WAY_TO_ORDER_COUNTRIES,
 } from "../types/typesMain";
-import axios from "axios";
 
 // const hostName = "http://localhost:3001";
 
@@ -65,7 +65,7 @@ export function getAllActivities() {
       const value = await res.data;
       return dispatch({ type: GET_ALL_ACTIVITIES, payload: value });
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 }

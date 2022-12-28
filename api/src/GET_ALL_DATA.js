@@ -15,7 +15,7 @@ const GET_ALL_DATA = async () => {
       capital: Array.isArray(i.capital) ? i.capital[0] : i.capital,
       sub_region: i.subregion,
       area: i.area,
-      poblacion: i.population,
+      poblacion: i.population
     };
   });
 
@@ -36,6 +36,7 @@ const GET_ALL_DATA = async () => {
       });
     });
   };
+  
   return set_all();
 };
 

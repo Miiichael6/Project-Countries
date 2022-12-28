@@ -24,11 +24,11 @@ routerCountries.get("/", async (req, res) => {
       );
       if (country.length !== 250) return res.status(200).send(country);
 
-      if(country.length === 0)
-      throw {
-        error: true,
-        statusText: `no se encontró el/los Pais(es)`,
-      };
+      if (country.length === 0)
+        throw {
+          error: true,
+          statusText: `no se encontró el/los Pais(es)`,
+        };
     }
   } catch (err) {
     if (err.statusText) return res.status(404).json(err);
@@ -45,7 +45,7 @@ routerCountries.get("/:id", async (req, res) => {
 
     const searchByID = await Country.findAll({
       where: {
-        id: tUC, 
+        id: tUC,
       },
       include: Activity,
     });

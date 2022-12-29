@@ -5,16 +5,13 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const ruteos = require("./routes/ruteos.js");
-
 const { FRONT_END_URL } = process.env;
 
 require("./db.js");
 
-
 const server = express();
 
-
-server.name = "API";
+// server.name = "API";
 
 server.use(cors());
 server.use(express.json());

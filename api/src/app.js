@@ -12,6 +12,8 @@ require("./db.js");
 
 const server = express();
 
+console.log(FRONTEND_URL)
+
 server.name = "API";
 
 server.use(cors());
@@ -21,7 +23,7 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use(morgan("dev"));
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", FRONTEND_URL);
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",

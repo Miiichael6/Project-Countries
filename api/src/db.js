@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PG_PORT } = process.env;
 
 let sequelize =
   process.env.NODE_ENV === "production"
@@ -10,7 +10,7 @@ let sequelize =
         database: DB_NAME,
         dialect: "postgres",
         host: DB_HOST,
-        port: 5432,
+        port: PG_PORT,
         username: DB_USER,
         password: DB_PASSWORD,
         pool: {
@@ -73,7 +73,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Activity, Country } = sequelize.models;
 
-Country.belongsToMany(Activity, { through: "Activities_in_Countries" }); 
+Country.belongsToMany(Activity, { through: "Activities_in_Countries" });
 Activity.belongsToMany(Country, { through: "Activities_in_Countries" });
 
 module.exports = {

@@ -12,6 +12,7 @@ require("./db.js");
 const server = express();
 
 // server.name = "API";
+console.log(process.env.FRONT_END_URL)
 
 server.use(cors());
 server.use(express.json());
